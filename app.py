@@ -14,24 +14,31 @@ scaler = pickle.load(open('scaling.pkl', 'rb'))
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+	return render_template('index.html')
 
 @app.route('/predict_api', methods=['POST'])
 def predict_api():
-    # get data from postman request
-    data = request.json['data']
+	# get data from postman request
+	data = request.json['data']
 
-    new_data = scaler.transform(np.array(list(data.values())).reshape(1, -1))
-    predicted_val = regmodel.predict(new_data) 
+	new_data = scaler.transform(np.array(list(data.values())).reshape(1, -1))
+	predicted_val = regmodel.predict(new_data) 
 
-    return jsonify(predicted_val[0])
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-    
+	return jsonify(predicted_val[0])
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json['data']
-    
+	# get form data fields
+	data = [float(x) for x in request.form.values()]
+
+	# Standardize the input data
+	input = scaler.transform(np.array(data).reshape(1, -1))
+
+	# Predict the house price
+	predicted_val = regmodel.predict(input)[0]
+
+	return render_template("index.html", prediction_text="The predicted house price is {}".format(predicted_val))
+
+
+if __name__ == "__main__":
+	app.run(debug=True)
