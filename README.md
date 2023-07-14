@@ -19,6 +19,8 @@ For an immersive and interactive experience, explore the notebook using Google C
 
 Discover the fascinating world of Boston housing data analysis, build a linear regression model, evaluate its performance using various metrics, and even predict housing prices based on new data. Join us in this exciting journey of understanding the real estate market and making informed predictions.
 
+Please note: To open the notebook in a new window or tab, right-click or Ctrl+click (on macOS) the badge and select "Open Link in New Tab/Window".
+
 ### Flask Application
 
 This project also includes a Flask application that utilizes the trained linear regression model. The model has been pickled and integrated into the application, enabling users to make predictions on new data. Stay tuned for more details on how to run the Flask app and leverage the power of the trained model for real-time predictions.
