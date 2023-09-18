@@ -1,4 +1,4 @@
-# boston-house-princing
+# House Pricing Flask application
 
 ### Software And Tools Requirements
 
